@@ -30,14 +30,6 @@
         <a href="{{ .Permalink }}" itemprop="url">{{ .Title }}</a>
       </h3>
 
-      <div class="pub-abstract" itemprop="text">
-        {{ if .Params.abstract_short }}
-        {{ .Params.abstract_short | markdownify }}
-        {{ else }}
-        {{ .Params.abstract | markdownify}}
-        {{ end }}
-      </div>
-
       <div class="pub-authors" itemprop="author">
         {{ with .Params.authors }}
         {{ delimit . ", " | markdownify }}
@@ -52,6 +44,15 @@
         {{- end -}},&nbsp;
         {{- .Date.Format "2006" -}}.
       </div>
+
+      <div class="pub-abstract" itemprop="text">
+        {{ if .Params.abstract_short }}
+        {{ .Params.abstract_short | markdownify }}
+        {{ else }}
+        {{ .Params.abstract | markdownify}}
+        {{ end }}
+      </div>
+
 
       <div class="pub-links">
         {{ partial "publication_links" (dict "content" . "is_list" 1) }}
